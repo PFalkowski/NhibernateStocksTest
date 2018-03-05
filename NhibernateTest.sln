@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NhibernateTest", "NhibernateTest\NhibernateTest.csproj", "{7E3B8989-C1BF-4866-8CB3-C9D7E386DC57}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7E3B8989-C1BF-4866-8CB3-C9D7E386DC57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E3B8989-C1BF-4866-8CB3-C9D7E386DC57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E3B8989-C1BF-4866-8CB3-C9D7E386DC57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E3B8989-C1BF-4866-8CB3-C9D7E386DC57}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4A321A4E-C24E-4389-BF5B-FE2EF06EDBE1}
+	EndGlobalSection
+EndGlobal
