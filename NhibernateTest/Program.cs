@@ -15,12 +15,12 @@ using System.Threading.Tasks;
 namespace NhibernateTest
 {
 
-    public class Companies
+    public class Company
     {
         public virtual string Ticker { get; set; }
-        public virtual ICollection<StockQuotes> Quotes { get; set; }
+        public virtual ICollection<StockQuote> Quotes { get; set; }
     }
-    public class StockQuotes
+    public class StockQuote
     {
         public virtual string Ticker { get; set; }
 
@@ -32,7 +32,7 @@ namespace NhibernateTest
         public virtual double Close { get; set; }
         public virtual double Volume { get; set; }
         
-        public virtual bool ValueEquals(StockQuotes other)
+        public virtual bool ValueEquals(StockQuote other)
         {
             return other.Ticker == Ticker &&
                    other.Date == Date;
@@ -40,7 +40,7 @@ namespace NhibernateTest
 
         public virtual bool Equals(object obj)
         {
-            if (!(obj is StockQuotes cast)) return false;
+            if (!(obj is StockQuote cast)) return false;
             return this.ValueEquals(cast);
         }
 
@@ -54,10 +54,11 @@ namespace NhibernateTest
             return $"{Ticker} {Date}";
         }
     }
-    public class CompanyNhibernateMap : ClassMap<Companies>
+    public class CompanyNhibernateMap : ClassMap<Company>
     {
         public CompanyNhibernateMap()
         {
+            Table("Companies");
             Id(x => x.Ticker);
             //Map(x => x.Ticker);
             HasMany(x => x.Quotes)
@@ -69,11 +70,12 @@ namespace NhibernateTest
             .Cascade.All();
         }
     }
-    public class StockQuoteNhibernateMap : ClassMap<StockQuotes>
+    public class StockQuoteNhibernateMap : ClassMap<StockQuote>
     {
         public StockQuoteNhibernateMap()
         {
             //Schema("dbo");
+            Table("StockQuotes");
             CompositeId()
                 .KeyProperty(x => x.Ticker)
                 .KeyProperty(x => x.Date);
@@ -93,7 +95,7 @@ namespace NhibernateTest
             CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
 
             var testQuote1 =
-                    new StockQuotes
+                    new StockQuote
                     {
                         Ticker = ticker,
                         Date = 20180101,
@@ -104,7 +106,7 @@ namespace NhibernateTest
                         Volume = 100
                     };
             var testQuote2 =
-                    new StockQuotes
+                    new StockQuote
                     {
                         Ticker = ticker,
                         Date = 20180102,
@@ -114,10 +116,10 @@ namespace NhibernateTest
                         Close = 11.2,
                         Volume = 100
                     };
-            var stock = new Companies
+            var stock = new Company
             {
                 Ticker = ticker,
-                Quotes = new Collection<StockQuotes>
+                Quotes = new Collection<StockQuote>
                 {
                     testQuote2
                 }
